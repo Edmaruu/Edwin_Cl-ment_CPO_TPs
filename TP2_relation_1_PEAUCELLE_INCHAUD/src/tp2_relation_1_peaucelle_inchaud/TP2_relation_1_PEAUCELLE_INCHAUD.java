@@ -29,6 +29,18 @@ public class TP2_relation_1_PEAUCELLE_INCHAUD {
         bob.liste_voitures[1] = uneAstonMartin;
         bob.nbVoitures = 2;
         uneAstonMartin.Proprietaire = bob;
+        reno.liste_voitures[0] = uneAutreClio;
+        reno.nbVoitures = 1;
+        une2008.Proprietaire = reno;
+        reno.liste_voitures[0] = une2008;
+        reno.nbVoitures = 1;
+        uneAutreClio.Proprietaire = reno;
+        reno.liste_voitures[0] = uneMicra;
+        reno.nbVoitures = 1;
+        uneMicra.Proprietaire = reno;
+        System.out.println("la premiere voiture de Bob est "
+                + bob.liste_voitures[0]);
+        System.out.println("la deuxième voiture de Bob est " + bob.liste_voitures[1]);
     }
 
 }
