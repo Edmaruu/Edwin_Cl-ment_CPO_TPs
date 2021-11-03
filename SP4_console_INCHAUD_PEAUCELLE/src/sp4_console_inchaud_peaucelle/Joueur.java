@@ -14,4 +14,10 @@ public class Joueur {
     Jeton[] ListeJetons;
     int nombreDesintegrateurs;
     int nombreJetonsRestants;
+    Joueur(String a) {
+        nom = a;
+        }
+    affecterCouleur(String) {
+        
+    }
 }
