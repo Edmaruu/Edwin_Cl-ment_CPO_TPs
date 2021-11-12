@@ -12,4 +12,18 @@ public class Cellule {
     Jeton jetonCourant;
     boolean trouNoir;
     boolean desintegrateur;
+    
+    public Cellule(){
+        jetonCourant = null;
+        trouNoir = false;
+        desintegrateur = false;
+    }
+    public boolean affecterJeton(Jeton jetonc){
+        if (jetonCourant != null){
+            return false;
+        }
+        jetonCourant=jetonc;
+        return true;       
+    }
+    
 }
