@@ -16,11 +16,11 @@ public class Partie {
     void attribuerCouleursAuxJoueurs() {
         int hasard = (int) Math.random();
         if (hasard == 0) {
-            Joueur1.affecterCouleur("jaune");
-            Joueur2.affecterCouleur("rouge"); 
+            ListeJoueur[0].affecterCouleur("jaune");
+            ListeJoueur[1].affecterCouleur("rouge"); 
         } else {
-            Joueur1.affecterCouleur("rouge");
-            Joueur2.affecterCouleur("jaune");
+            ListeJoueur[0].affecterCouleur("rouge");
+            ListeJoueur[1].affecterCouleur("jaune");
         }
         
     }
