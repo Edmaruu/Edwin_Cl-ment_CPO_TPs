@@ -19,9 +19,10 @@ public class Grille {
         }
         for(int i=5;i!=-1;i--){
             if(Cellulejeu[i][a]==null){
-                Cellulejeu[i][a]==
+                Cellulejeu[i][a].affecterJeton(jetonc);
                 return true;        
             }
         }
+        return false;
     }
 }
