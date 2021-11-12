@@ -9,6 +9,13 @@ package sp4_console_inchaud_peaucelle;
  * @author cleme
  */
 public class Jeton {
+
     String Couleur;
-    
+
+    public Jeton(String a) {
+        Couleur = a;
+    }
+public String lireCouleur(){
+    return Couleur;
+}
 }
