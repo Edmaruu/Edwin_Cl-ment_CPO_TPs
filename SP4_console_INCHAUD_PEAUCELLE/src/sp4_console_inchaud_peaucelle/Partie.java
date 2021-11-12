@@ -8,6 +8,15 @@ package sp4_console_inchaud_peaucelle;
  *
  * @author cleme
  */
-public class Grille {
-
+public class Partie {
+    Joueur[] ListeJoueur = new Joueur[2];
+    Joueur joueurCourant;
+    Grille grilleJeu;
+    
+    void attribuerCouleursAuxJoueurs() {
+        
+    }
+    void initialiserPartie(){
+        
+    }
 }
