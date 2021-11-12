@@ -14,6 +14,14 @@ public class Partie {
     Grille grilleJeu;
     
     void attribuerCouleursAuxJoueurs() {
+        int hasard = (int) Math.random();
+        if (hasard == 0) {
+            Joueur1.affecterCouleur("jaune");
+            Joueur2.affecterCouleur("rouge"); 
+        } else {
+            Joueur1.affecterCouleur("rouge");
+            Joueur2.affecterCouleur("jaune");
+        }
         
     }
     void initialiserPartie(){
