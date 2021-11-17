@@ -56,4 +56,21 @@ public class Grille {
             }
         }
     }
+    public boolean celluleOccupe(int a,int b){
+        if (Cellulejeu[a][b].jetonCourant==null){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public String CouleurDuJeton(int a, int b){
+        if (Cellulejeu[a][b].jetonCourant==null){
+            return "vide";
+        }else{
+        return Cellulejeu[a][b].lireCouleurDuJeton();
+        }
+    }
+    public boolean etreGagnantePourJoueur(Joueur Edwin){
+        return true;
+    }
 }
