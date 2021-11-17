@@ -29,6 +29,17 @@ public class Partie {
     }
     void initialiserPartie(){
         grilleJeu = new Grille();
+        Jeton jrouge = new Jeton("rouge");
+        Jeton jjaune = new Jeton("jaune");
+        for (int i=0; i<21; i++) {
+            ListeJoueur[0].ajouterJeton(jrouge);
+        }
+        for (int i=0; i<21; i++){
+            ListeJoueur[1].ajouterJeton(jjaune);
+        }
+    }
+    
+    void debuterPartie() {
         
     }
 }
