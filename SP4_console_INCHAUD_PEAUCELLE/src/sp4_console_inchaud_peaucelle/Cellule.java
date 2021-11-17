@@ -25,5 +25,11 @@ public class Cellule {
         jetonCourant=jetonc;
         return true;       
     }
-    
+    public String lireCouleurDuJeton(){
+        if (jetonCourant==null){
+            return "vide";
+        }else{
+            return jetonCourant.lireCouleur();
+        }
+    }
 }

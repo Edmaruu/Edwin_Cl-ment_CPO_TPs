@@ -15,7 +15,7 @@ public class SP4_console_INCHAUD_PEAUCELLE {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+      
     }
     
 }

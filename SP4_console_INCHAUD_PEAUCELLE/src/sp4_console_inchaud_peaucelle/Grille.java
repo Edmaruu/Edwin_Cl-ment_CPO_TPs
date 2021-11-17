@@ -44,6 +44,16 @@ public class Grille {
     
     }
     public void affichergrillesurconsole(){
-        
+        for (int i=0;i<7;i++){
+            for (int a=0;a<8;i++){
+              if (Cellulejeu[i][a].lireCouleurDuJeton()=="vide"){
+                  System.out.println("  ");
+              }else if(Cellulejeu[i][a].lireCouleurDuJeton()=="jaune"){
+                  System.out.println("\033[0;33m"+Cellulejeu[i][a]);
+              }else if(Cellulejeu[i][a].lireCouleurDuJeton()=="rouge"){
+                  System.out.println("\033[0;31m"+Cellulejeu[i][a]);
+              }
+            }
+        }
     }
 }
