@@ -35,4 +35,15 @@ public class Grille {
         }
         return true;
     }
+    public void vidergrille(){
+         for (int i=0;i<7;i++){
+            for (int a=0;a<8;i++){
+              Cellulejeu[i][a]=null;
+            }
+        }
+    
+    }
+    public void affichergrillesurconsole(){
+        
+    }
 }
