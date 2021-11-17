@@ -28,6 +28,7 @@ public class Partie {
         
     }
     void initialiserPartie(){
+        grilleJeu = new Grille();
         
     }
 }
