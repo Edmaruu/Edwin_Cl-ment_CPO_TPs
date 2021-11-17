@@ -4,6 +4,8 @@
  */
 package sp4_console_inchaud_peaucelle;
 
+import java.util.Random;
+
 /**
  *
  * @author cleme
@@ -12,9 +14,10 @@ public class Partie {
     Joueur[] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu;
-    
+    Random generateurAleat = new Random();
+
     void attribuerCouleursAuxJoueurs() {
-        int hasard = (int) Math.random();
+        int hasard = generateurAleat.nextInt(1);
         if (hasard == 0) {
             ListeJoueur[0].affecterCouleur("jaune");
             ListeJoueur[1].affecterCouleur("rouge"); 
