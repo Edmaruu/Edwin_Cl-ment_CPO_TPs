@@ -15,12 +15,10 @@ public class SP4_console_INCHAUD_PEAUCELLE {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-      
-     Joueur Joueur1;
-     Joueur Joueur2;
-     Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {     
+Joueur Joueur1;
+Joueur Joueur2;
+Scanner sc = new Scanner(System.in);
 
     }
     
