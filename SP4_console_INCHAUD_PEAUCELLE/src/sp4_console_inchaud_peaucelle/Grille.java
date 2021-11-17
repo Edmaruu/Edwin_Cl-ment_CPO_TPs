@@ -25,4 +25,14 @@ public class Grille {
         }
         return false;
     }
+    public boolean etreremplie(){
+        for (int i=0;i<7;i++){
+            for (int a=0;a<8;i++){
+                if (Cellulejeu[i][a]==null){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
