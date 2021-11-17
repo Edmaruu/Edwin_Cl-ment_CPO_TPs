@@ -13,7 +13,7 @@ public class Joueur {
     String nom;
     String couleur;
     Jeton[] ListeJetons = new Jeton[21];
-    int nombreJetonsRestants = ListeJetons.length;
+    int nombreJetonsRestants;
     int nombreDesintegrateurs;
 
     Joueur(String a) {
@@ -28,6 +28,7 @@ public class Joueur {
         for (int i = 0; i<21; i++) {
             if(ListeJetons[i] == null){
                 ListeJetons[i] = jeton;
+                nombreJetonsRestants = i+1;
                 break;
             }
         }
