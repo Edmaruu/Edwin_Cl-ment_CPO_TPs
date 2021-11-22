@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author cleme
  */
 public class Partie {
+
     Scanner sc = new Scanner(System.in);
 
     Joueur[] ListeJoueur = new Joueur[2];
@@ -44,18 +45,31 @@ public class Partie {
     }
 
     void debuterPartie() {
-        while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true or grilleJeu.etreGagnantePourJoueur(ListeJoueur[1] != true ) ) {
-        int x = -1;    
-        while (!(x <= 7 || x >= 0)) {
-                    System.out.println("Entrez le numéro de la colonne : ");
-                    x = sc.nextInt();
-        }
-        while (ListeJoueur[0].ajouterJetonDansColonne(Joueur[0].ListeJetons) !=  true){
-            
-        }           
+        while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
+            int x = -1;
+            while (!(x <= 7 && x >= 0)) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                x = sc.nextInt();
+            }
+            int i = 0;
+            while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[0].ListeJetons[i], x) != true) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                x = sc.nextInt();
+                i = i + 1;
+            }
+            int y = -1;
+            while (!(y <= 7 && y >= 0)) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                y = sc.nextInt();
+            }
+            int j = 0;
+            while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], x) != true) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                x = sc.nextInt();
+                j = j + 1;
+            }
         }
     }
-    
-        
+
 
 }
