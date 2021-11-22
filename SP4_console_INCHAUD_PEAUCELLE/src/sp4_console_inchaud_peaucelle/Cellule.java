@@ -32,4 +32,14 @@ public class Cellule {
             return jetonCourant.lireCouleur();
         }
     }
+    public Jeton recupererJeton(){
+        return jetonCourant;
+    }
+    public boolean supprimerJeton(){
+        if(jetonCourant==null){
+            return false;
+        }
+        jetonCourant=null;
+        return true;
+    }
 }
