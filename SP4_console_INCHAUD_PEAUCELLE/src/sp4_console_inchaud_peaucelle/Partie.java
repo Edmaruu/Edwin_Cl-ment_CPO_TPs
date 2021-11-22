@@ -45,7 +45,16 @@ public class Partie {
     }
 
     void debuterPartie() {
-        while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
+        while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
+            System.out.println("souhaitez-vous récupérez un jeton :");
+            String reponse = sc.nextLine();
+            if (reponse == "oui" || reponse == "OUI") {
+                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                String x = sc.nextLine();
+                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                String y = sc.nextLine();
+                recupererJeton(x,y);
+            } else {
             int x = -1;
             while (!(x <= 7 && x >= 0)) {
                 System.out.println("Entrez le numéro de la colonne : ");
