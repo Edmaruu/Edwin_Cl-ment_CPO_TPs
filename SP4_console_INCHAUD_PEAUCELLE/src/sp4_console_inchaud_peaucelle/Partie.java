@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author cleme
  */
 public class Partie {
+
     Scanner sc = new Scanner(System.in);
 
     Joueur[] ListeJoueur = new Joueur[2];
@@ -44,12 +45,40 @@ public class Partie {
     }
 
     void debuterPartie() {
-        while (etreGagnantePourJoueur(ListeJoueur[0]) != true or etreGagnantePourJoueur(ListeJoueur[1] != true ) ) {
-            while (x >= 7 and x <= 0) {
-                    int x = sc.nextInt("entrez le numéro de votre colonne : ");
-        }
-            Jeton jetona = new Jeton();
-        while (ListeJoueur[0].ajouterJetonDansColonne(jetona,x) !=  true) {
+        while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
+            System.out.println("souhaitez-vous récupérez un jeton :");
+            String reponse = sc.nextLine();
+            if (reponse == "oui" || reponse == "OUI") {
+                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                String x = sc.nextLine();
+                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                String y = sc.nextLine();
+                recupererJeton(x,y);
+            } else {
+            int x = -1;
+            while (!(x <= 7 && x >= 0)) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                x = sc.nextInt();
+            }
+            int i = 0;
+            while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[0].ListeJetons[i], x) != true) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                x = sc.nextInt();
+                i = i + 1;
+            }
+            int y = -1;
+            while (!(y <= 7 && y >= 0)) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                y = sc.nextInt();
+            }
+            int j = 0;
+            while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], x) != true) {
+                System.out.println("Entrez le numéro de la colonne : ");
+                x = sc.nextInt();
+                j = j + 1;
+            }
         }
     }
+
+
 }
