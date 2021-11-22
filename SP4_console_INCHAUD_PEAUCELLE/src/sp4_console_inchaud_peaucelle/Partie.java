@@ -5,12 +5,15 @@
 package sp4_console_inchaud_peaucelle;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
  * @author cleme
  */
 public class Partie {
+    Scanner sc = new Scanner(System.in);
+
     Joueur[] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu;
@@ -20,15 +23,33 @@ public class Partie {
         int hasard = generateurAleat.nextInt(1);
         if (hasard == 0) {
             ListeJoueur[0].affecterCouleur("jaune");
-            ListeJoueur[1].affecterCouleur("rouge"); 
+            ListeJoueur[1].affecterCouleur("rouge");
         } else {
             ListeJoueur[0].affecterCouleur("rouge");
             ListeJoueur[1].affecterCouleur("jaune");
         }
-        
+
     }
-    void initialiserPartie(){
+
+    void initialiserPartie() {
         grilleJeu = new Grille();
-        
+        Jeton jrouge = new Jeton("rouge");
+        Jeton jjaune = new Jeton("jaune");
+        for (int i = 0; i < 21; i++) {
+            ListeJoueur[0].ajouterJeton(jrouge);
+        }
+        for (int i = 0; i < 21; i++) {
+            ListeJoueur[1].ajouterJeton(jjaune);
+        }
+    }
+
+    void debuterPartie() {
+        while (etreGagnantePourJoueur(ListeJoueur[0]) != true or etreGagnantePourJoueur(ListeJoueur[1] != true ) ) {
+            while (x >= 7 and x <= 0) {
+                    int x = sc.nextInt("entrez le numéro de votre colonne : ");
+        }
+            Jeton jetona = new Jeton();
+        while (ListeJoueur[0].ajouterJetonDansColonne(jetona,x) !=  true) {
+        }
     }
 }
