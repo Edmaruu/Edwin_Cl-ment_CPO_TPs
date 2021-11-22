@@ -107,4 +107,15 @@ public class Grille {
         }
         return true;
     }
+    public void tasserGrille(int a){
+        for(int i=5;i!=-1;i--){
+            if (Cellulejeu[i][a].jetonCourant==null){
+                for(int b=i;b>0;b--){
+                    Cellulejeu[b][a].jetonCourant=Cellulejeu[b-1][a].jetonCourant;
+                    Cellulejeu[b-1][a].jetonCourant=null;
+                }
+            }
+            break;
+        }
+    }
 }
