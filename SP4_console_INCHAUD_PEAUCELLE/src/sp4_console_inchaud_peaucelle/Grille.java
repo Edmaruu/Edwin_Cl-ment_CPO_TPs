@@ -71,6 +71,34 @@ public class Grille {
         }
     }
     public boolean etreGagnantePourJoueur(Joueur Edwin){
-        return true;
+        for (int i=0;i<7;i++){
+            for (int a=0;a<4;i++){
+                if (CouleurDuJeton(i,a)==Edwin.couleur && CouleurDuJeton(i,a+1)==Edwin.couleur && CouleurDuJeton(i,a+2)==Edwin.couleur && CouleurDuJeton(i,a+3)==Edwin.couleur){
+                return true;
+                }
+            }
+         }
+        for (int i=0;i<8;i++){
+            for (int a=0;a<3;i++){
+               if (CouleurDuJeton(a,i)==Edwin.couleur && CouleurDuJeton(a+1,i)==Edwin.couleur && CouleurDuJeton(a+2,i)==Edwin.couleur && CouleurDuJeton(a+3,i)==Edwin.couleur){
+                return true;
+                } 
+            }
+        }
+         for (int i=0;i<3;i++){
+            for (int a=0;a<4;i++){
+                if (CouleurDuJeton(i,a)==Edwin.couleur && CouleurDuJeton(i+1,a+1)==Edwin.couleur && CouleurDuJeton(i+2,a+2)==Edwin.couleur && CouleurDuJeton(i+3,a+3)==Edwin.couleur){
+                return true;
+                }
+            }
+         }
+          for (int i=3;i<6;i++){
+            for (int a=0;a<4;i++){
+                if (CouleurDuJeton(i,a)==Edwin.couleur && CouleurDuJeton(i-1,a+1)==Edwin.couleur && CouleurDuJeton(i-2,a+2)==Edwin.couleur && CouleurDuJeton(i-3,a+3)==Edwin.couleur){
+                return true;
+                }
+            }
+         }
+          return false;
     }
 }
