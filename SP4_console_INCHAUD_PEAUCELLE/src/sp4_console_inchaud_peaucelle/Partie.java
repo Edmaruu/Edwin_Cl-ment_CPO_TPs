@@ -44,12 +44,18 @@ public class Partie {
     }
 
     void debuterPartie() {
-        while (etreGagnantePourJoueur(ListeJoueur[0]) != true or etreGagnantePourJoueur(ListeJoueur[1] != true ) ) {
-            while (x >= 7 and x <= 0) {
-                    int x = sc.nextInt("entrez le numéro de votre colonne : ");
+        while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true or grilleJeu.etreGagnantePourJoueur(ListeJoueur[1] != true ) ) {
+        int x = -1;    
+        while (!(x <= 7 || x >= 0)) {
+                    System.out.println("Entrez le numéro de la colonne : ");
+                    x = sc.nextInt();
         }
-            Jeton jetona = new Jeton();
-        while (ListeJoueur[0].ajouterJetonDansColonne(jetona,x) !=  true) {
+        while (ListeJoueur[0].ajouterJetonDansColonne(Joueur[0].ListeJetons) !=  true){
+            
+        }           
         }
     }
+    
+        
+
 }
