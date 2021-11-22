@@ -50,10 +50,10 @@ public class Partie {
             String reponse = sc.nextLine();
             if (reponse == "oui" || reponse == "OUI") {
                 System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
-                String x = sc.nextLine();
+                int x = sc.nextInt();
                 System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
-                String y = sc.nextLine();
-                recupererJeton(x,y);
+                int y = sc.nextInt();
+                grilleJeu.recupererJeton(x,y);
             } else {
             int x = -1;
             while (!(x <= 7 && x >= 0)) {
@@ -79,6 +79,8 @@ public class Partie {
             }
         }
     }
+}
+  
 
 
 }
