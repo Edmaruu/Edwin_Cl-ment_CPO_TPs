@@ -42,4 +42,11 @@ public class Cellule {
         jetonCourant=null;
         return true;
     }
+    public boolean placerTrouNoir(){
+        if (trouNoir==true){
+            return false;
+        }
+        trouNoir=true;
+        return true;
+    }
 }
