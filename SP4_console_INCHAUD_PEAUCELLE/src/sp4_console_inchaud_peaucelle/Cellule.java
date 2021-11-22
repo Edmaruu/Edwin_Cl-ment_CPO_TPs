@@ -49,4 +49,10 @@ public class Cellule {
         trouNoir=true;
         return true;
     }
+    public boolean presenceTrouNoir(){
+        if(trouNoir==true){
+            return true;
+        }
+        return false;
+    }
 }
