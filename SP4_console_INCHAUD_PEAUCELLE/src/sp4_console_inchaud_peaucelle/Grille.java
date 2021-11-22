@@ -101,4 +101,10 @@ public class Grille {
          }
           return false;
     }
+    public boolean colonneRemplie(int a){
+        if (Cellulejeu[0][a]!=null){
+            return false;
+        }
+        return true;
+    }
 }
