@@ -20,11 +20,11 @@ public class Grille {
         
     }
     public boolean ajouterJetonDansColonne(Jeton jetonc, int a){
-        if(Cellulejeu[0][a]!=null){
+        if(Cellulejeu[0][a].jetonCourant!=null){
             return false; 
         }
         for(int i=5;i!=-1;i--){
-            if(Cellulejeu[i][a]==null){
+            if(Cellulejeu[i][a].jetonCourant==null){
                 Cellulejeu[i][a].affecterJeton(jetonc);
                 return true;        
             }
@@ -34,7 +34,7 @@ public class Grille {
     public boolean etreremplie(){
         for (int i=0;i<6;i++){
             for (int a=0;a<7;a++){
-                if (Cellulejeu[i][a]==null){
+                if (Cellulejeu[i][a].jetonCourant==null){
                     return false;
                 }
             }
@@ -44,7 +44,7 @@ public class Grille {
     public void vidergrille(){
          for (int i=0;i<6;i++){
             for (int a=0;a<7;a++){
-              Cellulejeu[i][a]=null;
+              Cellulejeu[i][a].jetonCourant=null;
             }
         }
     
@@ -53,13 +53,14 @@ public class Grille {
         for (int i=0;i<6;i++){
             for (int a=0;a<7;a++){
               if (Cellulejeu[i][a].lireCouleurDuJeton()=="vide"){
-                  System.out.println("  ");
+                  System.out.print(" - ");
               }else if(Cellulejeu[i][a].lireCouleurDuJeton()=="jaune"){
-                  System.out.println("\033[0;33m"+Cellulejeu[i][a]);
+                  System.out.print("\033[0;33m"+" jet ");
               }else if(Cellulejeu[i][a].lireCouleurDuJeton()=="rouge"){
-                  System.out.println("\033[0;31m"+Cellulejeu[i][a]);
+                  System.out.print("\033[0;31m"+" cle ");
               }
             }
+            System.out.println();
         }
     }
     public boolean celluleOccupe(int a,int b){
@@ -108,7 +109,7 @@ public class Grille {
           return false;
     }
     public boolean colonneRemplie(int a){
-        if (Cellulejeu[0][a]!=null){
+        if (Cellulejeu[0][a].jetonCourant!=null){
             return false;
         }
         return true;
