@@ -17,6 +17,14 @@ public class SP4_console_INCHAUD_PEAUCELLE {
      */Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+    Partie partie1 = new Partie();
+    Joueur Joueur1 = new Joueur("clement");
+    Joueur Joueur2 = new Joueur("edwin");
+    partie1.ListeJoueur[0] = Joueur1;
+    partie1.ListeJoueur[1] = Joueur2;
+    partie1.attribuerCouleursAuxJoueurs();
+    partie1.initialiserPartie();
+    partie1.debuterPartie();
     }
     
 }
