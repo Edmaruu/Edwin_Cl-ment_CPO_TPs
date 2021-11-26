@@ -29,20 +29,29 @@ public class Partie {
             ListeJoueur[0].affecterCouleur("rouge");
             ListeJoueur[1].affecterCouleur("jaune");
         }
-
+// distribue les couleurs aléatoirement aux joueurs
     }
 
     void initialiserPartie() {
         grilleJeu = new Grille();
         Jeton jrouge = new Jeton("rouge");
         Jeton jjaune = new Jeton("jaune");
-        for (int i = 0; i < 21; i++) {
-            ListeJoueur[0].ajouterJeton(jrouge);
+        if (ListeJoueur[0].couleur == "rouge") {
+            for (int i = 0; i < 21; i++) {
+                ListeJoueur[0].ajouterJeton(jrouge);
+            }
+            for (int i = 0; i < 21; i++) {
+                ListeJoueur[1].ajouterJeton(jjaune);
+            }
+        } else {
+            for (int i = 0; i < 21; i++) {
+                ListeJoueur[0].ajouterJeton(jjaune);
+            }
+            for (int i = 0; i < 21; i++) {
+                ListeJoueur[1].ajouterJeton(jrouge);
+            }
         }
-        for (int i = 0; i < 21; i++) {
-            ListeJoueur[1].ajouterJeton(jjaune);
-        }
-    }
+    }// donne les jeton aux joueurs selon leur couleur
 
     void debuterPartie() {
         while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
@@ -53,34 +62,32 @@ public class Partie {
                 int x = sc.nextInt();
                 System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
                 int y = sc.nextInt();
-                grilleJeu.recupererJeton(x,y);
+                grilleJeu.recupererJeton(x, y);
             } else {
-            int x = -1;
-            while (!(x <= 7 && x >= 0)) {
-                System.out.println("Entrez le numéro de la colonne : ");
-                x = sc.nextInt();
-            }
-            int i = 0;
-            while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[0].ListeJetons[i], x) != true) {
-                System.out.println("Entrez le numéro de la colonne : ");
-                x = sc.nextInt();
-                i = i + 1;
-            }
-            int y = -1;
-            while (!(y <= 7 && y >= 0)) {
-                System.out.println("Entrez le numéro de la colonne : ");
-                y = sc.nextInt();
-            }
-            int j = 0;
-            while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], x) != true) {
-                System.out.println("Entrez le numéro de la colonne : ");
-                x = sc.nextInt();
-                j = j + 1;
+                int x = -1;
+                while (!(x <= 7 && x >= 0)) {
+                    System.out.println("Entrez le numéro de la colonne : ");
+                    x = sc.nextInt();
+                }
+                int i = 0;
+                while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[0].ListeJetons[i], x) != true) {
+                    System.out.println("Entrez le numéro de la colonne : ");
+                    x = sc.nextInt();
+                    i = i + 1;
+                }
+                int y = -1;
+                while (!(y <= 7 && y >= 0)) {
+                    System.out.println("Entrez le numéro de la colonne : ");
+                    y = sc.nextInt();
+                }
+                int j = 0;
+                while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], x) != true) {
+                    System.out.println("Entrez le numéro de la colonne : ");
+                    x = sc.nextInt();
+                    j = j + 1;
+                }
             }
         }
     }
-}
-  
-
 
 }
