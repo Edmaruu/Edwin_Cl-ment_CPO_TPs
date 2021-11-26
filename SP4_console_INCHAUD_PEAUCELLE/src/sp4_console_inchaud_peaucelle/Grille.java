@@ -118,4 +118,24 @@ public class Grille {
             break;
         }
     }
+    public boolean placerTrouNoir(int a, int b){
+        if(Cellulejeu[a][b].presenceTrouNoir()==true){
+            return false;
+        }
+        Cellulejeu[a][b].placerTrouNoir();
+        return true;
+    }
+    public boolean placerDesintegrateur(int a, int b){
+           if(Cellulejeu[a][b].presenceDesintegrateur()==true){
+            return false;
+        }
+        Cellulejeu[a][b].placerDesintegrateur();
+        return true;
+    }
+    public boolean supprimerJeton(int a, int b){
+       return Cellulejeu[a][b].supprimerJeton();
+    }
+    public void recupererJeton(int a, int b){
+        Cellulejeu[a][b].recupererJeton();
+    }
 }
