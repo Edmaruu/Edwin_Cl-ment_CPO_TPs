@@ -42,4 +42,45 @@ public class Cellule {
         jetonCourant=null;
         return true;
     }
+    public boolean placerTrouNoir(){
+        if (trouNoir==true){
+            return false;
+        }
+        trouNoir=true;
+        return true;
+    }
+    public boolean presenceTrouNoir(){
+        if(trouNoir==true){
+            return true;
+        }
+        return false;
+    }
+    public boolean placerDesintegrateur(){
+        if (desintegrateur==true){
+            return false;
+        }
+        desintegrateur=true;
+        return true;
+    }
+    public boolean presenceDesintegrateur(){
+        if(desintegrateur==true){
+            return true;
+        }
+        return false;
+    }
+    public boolean recupererDesintegrateur(){
+         if(desintegrateur==false){
+            return false;
+        }
+        desintegrateur=false;
+        return true;
+    }
+    public boolean activerTrounoir(){
+        if(presenceTrouNoir()==false){
+            return false;
+        }
+        supprimerJeton();
+        trouNoir=false;
+        return true;
+    }
 }
