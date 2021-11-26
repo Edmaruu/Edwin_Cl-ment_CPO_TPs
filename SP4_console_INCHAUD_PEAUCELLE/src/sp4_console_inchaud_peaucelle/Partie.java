@@ -20,7 +20,7 @@ public class Partie {
     Grille grilleJeu;
     Random generateurAleat = new Random();
 
-    void attribuerCouleursAuxJoueurs() {
+    public void attribuerCouleursAuxJoueurs() {
         int hasard = generateurAleat.nextInt(1);
         if (hasard == 0) {
             ListeJoueur[0].affecterCouleur("jaune");
@@ -32,7 +32,7 @@ public class Partie {
 // distribue les couleurs aléatoirement aux joueurs
     }
 
-    void initialiserPartie() {
+    public void initialiserPartie() {
         grilleJeu = new Grille();
         Jeton jrouge = new Jeton("rouge");
         Jeton jjaune = new Jeton("jaune");
@@ -53,19 +53,20 @@ public class Partie {
         }
     }// donne les jeton aux joueurs selon leur couleur
 
-    void debuterPartie() {
+    public void debuterPartie() {
         while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
+            grilleJeu.affichergrillesurconsole();
             System.out.println("souhaitez-vous récupérez un jeton :");
             String reponse = sc.nextLine();
-            if (reponse == "oui" || reponse == "OUI") {
+            if (("oui".equals(reponse)) || ("OUI".equals(reponse))) {
                 System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
                 int x = sc.nextInt();
-                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
                 int y = sc.nextInt();
                 grilleJeu.recupererJeton(x, y);
             } else {
                 int x = -1;
-                while (!(x <= 7 && x >= 0)) {
+                while (!(x < 7 && x >= 0)) {
                     System.out.println("Entrez le numéro de la colonne : ");
                     x = sc.nextInt();
                 }
@@ -75,15 +76,26 @@ public class Partie {
                     x = sc.nextInt();
                     i = i + 1;
                 }
+            }
+            grilleJeu.affichergrillesurconsole();
+            System.out.println("souhaitez-vous récupérez un jeton :");
+            String reponse2 = sc.nextLine();
+            if (("oui".equals(reponse2)) || ("OUI".equals(reponse2))) {
+                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                int x2 = sc.nextInt();
+                System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
+                int y2 = sc.nextInt();
+                grilleJeu.recupererJeton(x2, y2);
+            } else {
                 int y = -1;
-                while (!(y <= 7 && y >= 0)) {
+                while (!(y <= 6 && y >= 0)) {
                     System.out.println("Entrez le numéro de la colonne : ");
                     y = sc.nextInt();
                 }
                 int j = 0;
-                while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], x) != true) {
+                while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], y) != true) {
                     System.out.println("Entrez le numéro de la colonne : ");
-                    x = sc.nextInt();
+                    y = sc.nextInt();
                     j = j + 1;
                 }
             }
