@@ -12,6 +12,12 @@ public class Grille {
     Cellule [][] Cellulejeu;
     public Grille(){
         Cellulejeu= new Cellule [6][7];
+         for (int i=0;i<7;i++){
+            for (int a=0;a<8;i++){
+              Cellulejeu[i][a]= new Cellule();
+            }
+        }
+        
     }
     public boolean ajouterJetonDansColonne(Jeton jetonc, int a){
         if(Cellulejeu[0][a]!=null){
