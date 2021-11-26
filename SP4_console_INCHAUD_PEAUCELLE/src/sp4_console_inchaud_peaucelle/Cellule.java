@@ -75,4 +75,12 @@ public class Cellule {
         desintegrateur=false;
         return true;
     }
+    public boolean activerTrounoir(){
+        if(presenceTrouNoir()==false){
+            return false;
+        }
+        supprimerJeton();
+        trouNoir=false;
+        return true;
+    }
 }
