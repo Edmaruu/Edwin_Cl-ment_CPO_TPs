@@ -13,7 +13,7 @@ public class Grille {
     public Grille(){
         Cellulejeu= new Cellule [6][7];
          for (int i=0;i<6;i++){
-            for (int a=0;a<7;i++){
+            for (int a=0;a<7;a++){
               Cellulejeu[i][a]= new Cellule();
             }
         }
@@ -33,7 +33,7 @@ public class Grille {
     }
     public boolean etreremplie(){
         for (int i=0;i<6;i++){
-            for (int a=0;a<7;i++){
+            for (int a=0;a<7;a++){
                 if (Cellulejeu[i][a]==null){
                     return false;
                 }
@@ -43,7 +43,7 @@ public class Grille {
     }
     public void vidergrille(){
          for (int i=0;i<6;i++){
-            for (int a=0;a<7;i++){
+            for (int a=0;a<7;a++){
               Cellulejeu[i][a]=null;
             }
         }
@@ -51,7 +51,7 @@ public class Grille {
     }
     public void affichergrillesurconsole(){
         for (int i=0;i<6;i++){
-            for (int a=0;a<7;i++){
+            for (int a=0;a<7;a++){
               if (Cellulejeu[i][a].lireCouleurDuJeton()=="vide"){
                   System.out.println("  ");
               }else if(Cellulejeu[i][a].lireCouleurDuJeton()=="jaune"){
@@ -78,28 +78,28 @@ public class Grille {
     }
     public boolean etreGagnantePourJoueur(Joueur Edwin){
         for (int i=0;i<6;i++){
-            for (int a=0;a<4;i++){
+            for (int a=0;a<4;a++){
                 if (CouleurDuJeton(i,a)==Edwin.couleur && CouleurDuJeton(i,a+1)==Edwin.couleur && CouleurDuJeton(i,a+2)==Edwin.couleur && CouleurDuJeton(i,a+3)==Edwin.couleur){
                 return true;
                 }
             }
          }
         for (int i=0;i<7;i++){
-            for (int a=0;a<3;i++){
+            for (int a=0;a<3;a++){
                if (CouleurDuJeton(a,i)==Edwin.couleur && CouleurDuJeton(a+1,i)==Edwin.couleur && CouleurDuJeton(a+2,i)==Edwin.couleur && CouleurDuJeton(a+3,i)==Edwin.couleur){
                 return true;
                 } 
             }
         }
          for (int i=0;i<3;i++){
-            for (int a=0;a<4;i++){
+            for (int a=0;a<4;a++){
                 if (CouleurDuJeton(i,a)==Edwin.couleur && CouleurDuJeton(i+1,a+1)==Edwin.couleur && CouleurDuJeton(i+2,a+2)==Edwin.couleur && CouleurDuJeton(i+3,a+3)==Edwin.couleur){
                 return true;
                 }
             }
          }
           for (int i=3;i<6;i++){
-            for (int a=0;a<4;i++){
+            for (int a=0;a<4;a++){
                 if (CouleurDuJeton(i,a)==Edwin.couleur && CouleurDuJeton(i-1,a+1)==Edwin.couleur && CouleurDuJeton(i-2,a+2)==Edwin.couleur && CouleurDuJeton(i-3,a+3)==Edwin.couleur){
                 return true;
                 }
