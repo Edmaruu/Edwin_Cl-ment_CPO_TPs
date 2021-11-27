@@ -74,9 +74,9 @@ public class Partie {
     public void debuterPartie() {
         while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
             grilleJeu.affichergrillesurconsole();
-            System.out.println("souhaitez-vous récupérez un jeton :");
-            String reponse = sc.nextLine();
-            if (("oui".equals(reponse)) || ("OUI".equals(reponse))) {
+            System.out.println("souhaitez-vous récupérez un jeton si oui 0:");
+            int reponse = sc.nextInt();
+            if (reponse == 0) {
                 System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
                 int Lenleve0 = sc.nextInt();
                 System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
@@ -106,10 +106,10 @@ public class Partie {
                 }
             }
             grilleJeu.affichergrillesurconsole();
-            System.out.println("souhaitez-vous récupérez un jeton :");
-            String reponse2 = sc.nextLine();
+            System.out.println("souhaitez-vous récupérez un jeton si oui 0:");
+            int reponse2 = sc.nextInt();
             System.out.println(reponse2);
-            if (("oui".equals(reponse2)) || ("OUI".equals(reponse2))) {
+            if (reponse2 == 0) {
                 System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
                 int x2 = sc.nextInt();
                 System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
