@@ -50,8 +50,26 @@ public class Partie {
             for (int i = 0; i < 21; i++) {
                 ListeJoueur[1].ajouterJeton(jrouge);
             }
+        }// donne les jeton aux joueurs selon leur couleur
+        for (int i = 0; i < 5; i++) {
+            int x = generateurAleat.nextInt(6);
+            int y = generateurAleat.nextInt(7);
+            int w = generateurAleat.nextInt(6);
+            int z = generateurAleat.nextInt(7);
+            grilleJeu.placerTrouNoir(x, y);
+            if (i > 2) {
+                grilleJeu.placerDesintegrateur(x, y);
+            } else {
+                grilleJeu.placerDesintegrateur(w, z);
+                if (x == w && y == z) {
+                    while (x != w && y != z) {
+                        w = generateurAleat.nextInt(6);
+                        z = generateurAleat.nextInt(7);
+                    }
+                }
+            }
         }
-    }// donne les jeton aux joueurs selon leur couleur
+    }
 
     public void debuterPartie() {
         while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
@@ -71,35 +89,64 @@ public class Partie {
                     x = sc.nextInt();
                 }
                 int i = 0;
-                while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[0].ListeJetons[i], x) != true) {
+                while ((grilleJeu.ajouterJetonDansColonne(ListeJoueur[0].ListeJetons[i], x) != true) && (!(x < 7 && x >= 0))) {
                     System.out.println("Entrez le numéro de la colonne : ");
                     x = sc.nextInt();
                     i = i + 1;
                 }
-            }
-            grilleJeu.affichergrillesurconsole();
-            System.out.println("souhaitez-vous récupérez un jeton :");
-            String reponse2 = sc.nextLine();
-            if (("oui".equals(reponse2)) || ("OUI".equals(reponse2))) {
-                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
-                int x2 = sc.nextInt();
-                System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
-                int y2 = sc.nextInt();
-                grilleJeu.recupererJeton(x2, y2);
-            } else {
-                int y = -1;
-                while (!(y <= 6 && y >= 0)) {
-                    System.out.println("Entrez le numéro de la colonne : ");
-                    y = sc.nextInt();
+                int ligne;
+                for (ligne = 0; ligne < 6; ligne++) {
+                    if (grilleJeu.celluleOccupe(ligne, x) == true) {
+                        grilleJeu.Cellulejeu[ligne][x].activerTrounoir();
+                        if (grilleJeu.Cellulejeu[ligne][x].recupererDesintegrateur() == true) {
+                            ListeJoueur[0].nombreDesintegrateurs += 1;
+                        }
+                        break;
+                    }
                 }
-                int j = 0;
-                while (grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], y) != true) {
-                    System.out.println("Entrez le numéro de la colonne : ");
-                    y = sc.nextInt();
-                    j = j + 1;
+                grilleJeu.affichergrillesurconsole();
+                System.out.println("souhaitez-vous récupérez un jeton :");
+                String reponse2 = sc.nextLine();
+                if (("oui".equals(reponse2)) || ("OUI".equals(reponse2))) {
+                    System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                    int x2 = sc.nextInt();
+                    System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
+                    int y2 = sc.nextInt();
+                    grilleJeu.recupererJeton(x2, y2);
+                } else {
+                    int y = -1;
+                    while (!(y <= 6 && y >= 0)) {
+                        System.out.println("Entrez le numéro de la colonne : ");
+                        y = sc.nextInt();
+                    }
+                    int j = 0;
+                    while ((grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[i], x) != true) && (!(x < 7 && x >= 0))) {
+                        System.out.println("Entrez le numéro de la colonne : ");
+                        y = sc.nextInt();
+                        j = j + 1;
+                    }
+                    int lignee;
+                    for (lignee = 0; lignee < 6; lignee++) {
+                        if (grilleJeu.celluleOccupe(ligne, x) == true) {
+                            grilleJeu.Cellulejeu[ligne][x].activerTrounoir();
+                            if (grilleJeu.Cellulejeu[ligne][x].recupererDesintegrateur() == true) {
+                                ListeJoueur[1].nombreDesintegrateurs += 1;
+                            }
+                            break;
+                        }
+                    }
+                    for (ligne = 0; ligne < 6; ligne++) {
+                        if (grilleJeu.celluleOccupe(ligne, x) == true) {
+                            grilleJeu.Cellulejeu[ligne][x].activerTrounoir();
+                            if (grilleJeu.Cellulejeu[ligne][x].recupererDesintegrateur() == true) {
+                                ListeJoueur[0].nombreDesintegrateurs += 1;
+                            }
+                            break;
+                        }
+                    }
                 }
             }
+
         }
     }
-
 }
