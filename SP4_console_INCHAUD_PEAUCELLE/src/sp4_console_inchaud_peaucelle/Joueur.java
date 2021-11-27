@@ -30,6 +30,8 @@ public class Joueur {
                 ListeJetons[i] = jeton;
                 nombreJetonsRestants = i+1;
                 break;// méthode qui ajoute un jeton au joueur
+                
+                
             }
         }
     }
