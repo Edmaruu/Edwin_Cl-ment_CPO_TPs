@@ -4,6 +4,8 @@
  */
 package sp4_console_inchaud_peaucelle;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author cleme
@@ -18,6 +20,10 @@ public class Joueur {
 // les paramètres de la classe Joueur
     Joueur(String a) {
         nom = a;
+    }
+
+    Joueur(JTextField Nom_joueur_1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 // asssocie un Joueur à un nom
     void affecterCouleur(String b) {
