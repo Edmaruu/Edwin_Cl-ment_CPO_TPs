@@ -29,7 +29,7 @@ public class CelluleGraphique extends JButton {
     public void paintComponent(Graphics G) {
         super.paintComponent(G);
         if (celluleAssociee.presenceTrouNoir() == true) {
-            setIcon(img_vide);
+            setIcon(img_trouNoir);
         } else if (celluleAssociee.presenceDesintegrateur() == true) {
             setIcon(img_desint);
         } else {
