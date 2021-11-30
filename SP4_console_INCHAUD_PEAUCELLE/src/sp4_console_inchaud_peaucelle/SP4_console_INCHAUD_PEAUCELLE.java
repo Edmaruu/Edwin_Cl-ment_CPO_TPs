@@ -14,17 +14,22 @@ public class SP4_console_INCHAUD_PEAUCELLE {
 
     /**
      * @param args the command line arguments
-     */Scanner sc = new Scanner(System.in);
+     */
 
     public static void main(String[] args) {
-    Partie partie1 = new Partie();
-    Joueur Joueur1 = new Joueur("clement");
-    Joueur Joueur2 = new Joueur("edwin");
-    partie1.ListeJoueur[0] = Joueur1;
-    partie1.ListeJoueur[1] = Joueur2;
-    partie1.attribuerCouleursAuxJoueurs();
-    partie1.initialiserPartie();
-    partie1.debuterPartie();
-    }
+        Scanner sc=new Scanner(System.in);
+        System.out.println("tape : ");
+        int rep = sc.nextInt();
+    
+        if(rep != 0){
+            System.out.println("retape");
+            rep = sc.nextInt();
+            if (rep == 0) {
+                System.out.println("nique ta mère");
+            }
+        } else {
+            System.out.println("j'abandonne");
+        }
+}
     
 }
