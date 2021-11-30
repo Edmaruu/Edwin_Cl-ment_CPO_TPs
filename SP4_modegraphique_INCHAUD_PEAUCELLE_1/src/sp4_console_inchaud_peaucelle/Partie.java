@@ -69,7 +69,31 @@ public class Partie {
                 }
             }
         }
-        
+
+    }
+
+    public void jouerJeton(int a) {
+        int x = -1;
+        while (!(x < 7 && x >= 0)) {
+            System.out.println("Entrez le numéro de la colonne : ");
+            x = sc.nextInt();
+        }
+        int i = 0;
+        while ((grilleJeu.ajouterJetonDansColonne(ListeJoueur[a].ListeJetons[i], x) != true) && (!(x < 7 && x >= 0))) {
+            System.out.println("Entrez le numéro de la colonne : ");
+            x = sc.nextInt();
+            i = i + 1;
+        }
+        int ligne;
+        for (ligne = 0; ligne < 6; ligne++) {
+            if (grilleJeu.celluleOccupe(ligne, x) == true) {
+                grilleJeu.Cellulejeu[ligne][x].activerTrounoir();
+                if (grilleJeu.Cellulejeu[ligne][x].recupererDesintegrateur() == true) {
+                    ListeJoueur[0].nombreDesintegrateurs += 1;
+                }
+                break;
+            }
+        }
     }
 
     public void debuterPartie() {
@@ -84,27 +108,7 @@ public class Partie {
                 int Cenleve0 = sc.nextInt();
                 grilleJeu.recupererJeton(Lenleve0, Cenleve0);
             } else {
-                int x = -1;
-                while (!(x < 7 && x >= 0)) {
-                    System.out.println("Entrez le numéro de la colonne : ");
-                    x = sc.nextInt();
-                }
-                int i = 0;
-                while ((grilleJeu.ajouterJetonDansColonne(ListeJoueur[0].ListeJetons[i], x) != true) && (!(x < 7 && x >= 0))) {
-                    System.out.println("Entrez le numéro de la colonne : ");
-                    x = sc.nextInt();
-                    i = i + 1;
-                }
-                int ligne;
-                for (ligne = 0; ligne < 6; ligne++) {
-                    if (grilleJeu.celluleOccupe(ligne, x) == true) {
-                        grilleJeu.Cellulejeu[ligne][x].activerTrounoir();
-                        if (grilleJeu.Cellulejeu[ligne][x].recupererDesintegrateur() == true) {
-                            ListeJoueur[0].nombreDesintegrateurs += 1;
-                        }
-                        break;
-                    }
-                }
+                jouerJeton(0);
             }
             grilleJeu.affichergrillesurconsole();
             System.out.println("souhaitez-vous récupérez un jeton si oui 0:");
@@ -117,27 +121,7 @@ public class Partie {
                 int y2 = sc.nextInt();
                 grilleJeu.recupererJeton(x2, y2);
             } else {
-                int y = -1;
-                while (!(y <= 6 && y >= 0)) {
-                    System.out.println("Entrez le numéro de la colonne : ");
-                    y = sc.nextInt();
-                }
-                int j = 0;
-                while ((grilleJeu.ajouterJetonDansColonne(ListeJoueur[1].ListeJetons[j], y) != true) && (!(y < 7 && y >= 0))) {
-                    System.out.println("Entrez le numéro de la colonne : ");
-                    y = sc.nextInt();
-                    j = j + 1;
-                }
-                int lignee;
-                for (lignee = 0; lignee < 6; lignee++) {
-                    if (grilleJeu.celluleOccupe(lignee, y) == true) {
-                        grilleJeu.Cellulejeu[lignee][y].activerTrounoir();
-                        if (grilleJeu.Cellulejeu[lignee][y].recupererDesintegrateur() == true) {
-                            ListeJoueur[1].nombreDesintegrateurs += 1;
-                        }
-                        break;
-                    }
-                }
+                jouerJeton(1);
             }
         }
     }
