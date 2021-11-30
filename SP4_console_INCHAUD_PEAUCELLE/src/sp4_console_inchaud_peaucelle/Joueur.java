@@ -34,6 +34,7 @@ public class Joueur {
                 
             }
         }
+        System.out.println("Jeton ajouté");
     }
 
 }
