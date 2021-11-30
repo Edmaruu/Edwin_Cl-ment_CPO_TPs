@@ -27,6 +27,79 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.Cellulejeu[i][j]);
+                cellGraph.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        Cellule c = cellGraph.celluleAssociee;
+                        if (c.jetonCourant == null) {
+                            return;
+                        }
+                        if (c.jetonCourant.Couleur == joueurCourant.couleur) {
+                            textemessage.setText("le joueur " + joueurCourant.nom + " récupère un de ses jetons");
+                            Jeton jrecup = c.recupererJeton();
+                            joueurCourant.ajouterJeton(jrecup);
+                            c.supprimerJeton();
+                            panneau_grille.repaint();
+                            joueurSuivant();
+                        } else {
+                            if (joueurCourant.nombreDesintegrateurs > 0) {
+                                textemessage.setText("le joueur " + joueurCourant.nom + " veut désintégrer un jeton");
+                                c.supprimerJeton();
+                                panneau_grille.repaint();
+                                joueurCourant.nombreDesintegrateurs--;
+
+                                joueurSuivant();
+                            } else {
+                                return;
+                            }
+                        }
+                        grilleJeu.tasserGrille();
+                        for (int a = 0; a < 7; a++) {
+                            if (grilleJeu.colonneRemplie(a) == false) {
+                                btn_col_0.setEnabled(true);
+                                switch (a) {
+                                    case 0:
+                                        btn_col_0.setEnabled(true);
+                                        break;
+                                    case 1:
+                                        btn_col_1.setEnabled(true);
+                                        break;
+                                    case 2:
+                                        btn_col_2.setEnabled(true);
+                                        break;
+                                    case 3:
+                                        btn_col_3.setEnabled(true);
+                                        break;
+                                    case 4:
+                                        btn_col_4.setEnabled(true);
+                                        break;
+                                    case 5:
+                                        btn_col_5.setEnabled(true);
+                                        break;
+                                    case 6:
+                                        btn_col_6.setEnabled(true);
+                                        break;
+                                }
+                            }
+                        }
+                        lbl_j1_desint.setText("" + ListeJoueur[0].nombreDesintegrateurs);
+                        lbl_j2_desint.setText("" + ListeJoueur[1].nombreDesintegrateurs);
+                        boolean vict_j1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
+                        boolean vict_j2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
+                        if (vict_j1 && !vict_j2) {
+                            textemessage.setText("victoire de" + ListeJoueur[0].nom);
+                        }
+                        if (vict_j2 && !vict_j1) {
+                            textemessage.setText("victoire de" + ListeJoueur[1].nom);
+                        }
+                        if (vict_j2 && vict_j1) {
+                            if (joueurCourant == ListeJoueur[0]) {
+                                textemessage.setText("victoire de" + ListeJoueur[1].nom);
+                            } else {
+                                textemessage.setText("victoire de" + ListeJoueur[0].nom + "faute de jeu du joueur 2");
+                            }
+                        }
+                    }
+                });
                 panneau_grille.add(cellGraph);
             }
         }
@@ -337,7 +410,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                     grilleJeu.Cellulejeu[ligne][indice_colone].activerTrounoir();
                     if (grilleJeu.Cellulejeu[ligne][indice_colone].recupererDesintegrateur() == true) {
                         joueurCourant.nombreDesintegrateurs += 1;
-                        lbl_j2_desint.setText("" + joueurCourant.nombreDesintegrateurs);
+                        lbl_j1_desint.setText("" + joueurCourant.nombreDesintegrateurs);
                     }
                     break;
                 }
@@ -345,17 +418,17 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             panneau_grille.repaint();
             vict_j1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
             vict_j2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
-             if (vict_j1 && !vict_j2) {
-                textemessage.setText("victoire de"+ ListeJoueur[0].nom);
+            if (vict_j1 && !vict_j2) {
+                textemessage.setText("victoire de" + ListeJoueur[0].nom);
             }
             if (vict_j2 && !vict_j1) {
-                textemessage.setText("victoire de"+ ListeJoueur[1].nom);
+                textemessage.setText("victoire de" + ListeJoueur[1].nom);
             }
             if (vict_j2 && vict_j1) {
-                if(joueurCourant==ListeJoueur[0]){
-                    textemessage.setText("victoire de"+ ListeJoueur[1].nom);
-                }else{
-                  textemessage.setText("victoire de"+ ListeJoueur[0].nom+ "faute de jeu du joueur 2");  
+                if (joueurCourant == ListeJoueur[0]) {
+                    textemessage.setText("victoire de" + ListeJoueur[1].nom);
+                } else {
+                    textemessage.setText("victoire de" + ListeJoueur[0].nom + "faute de jeu du joueur 2");
                 }
             }
             i++;
@@ -373,7 +446,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                     grilleJeu.Cellulejeu[lignee][indice_colone].activerTrounoir();
                     if (grilleJeu.Cellulejeu[lignee][indice_colone].recupererDesintegrateur() == true) {
                         joueurCourant.nombreDesintegrateurs += 1;
-                        lbl_j1_desint.setText("" + joueurCourant.nombreDesintegrateurs);
+                        lbl_j2_desint.setText("" + joueurCourant.nombreDesintegrateurs);
                     }
                     break;
                 }
@@ -382,16 +455,16 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             vict_j1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
             vict_j2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
             if (vict_j1 && !vict_j2) {
-                textemessage.setText("victoire de"+ ListeJoueur[0].nom);
+                textemessage.setText("victoire de" + ListeJoueur[0].nom);
             }
             if (vict_j2 && !vict_j1) {
-                textemessage.setText("victoire de"+ ListeJoueur[1].nom);
+                textemessage.setText("victoire de" + ListeJoueur[1].nom);
             }
             if (vict_j2 && vict_j1) {
-                if(joueurCourant==ListeJoueur[0]){
-                    textemessage.setText("victoire de"+ ListeJoueur[1].nom);
-                }else{
-                  textemessage.setText("victoire de"+ ListeJoueur[0].nom + "faute de jeu du joueur 2");  
+                if (joueurCourant == ListeJoueur[0]) {
+                    textemessage.setText("victoire de" + ListeJoueur[1].nom);
+                } else {
+                    textemessage.setText("victoire de" + ListeJoueur[0].nom + "faute de jeu du joueur 2");
                 }
             }
             a++;
