@@ -106,19 +106,25 @@ public class Partie {
     public void debuterPartie() {
         while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
             grilleJeu.affichergrillesurconsole();
-            System.out.println("souhaitez-vous récupérez un jeton si oui 0:");
+            System.out.println("souhaitez-vous jouer un jeton (1)récupérez un jeton (0) ou désintégrer un jeton (2)");
             int reponse = sc.nextInt();
             if (reponse == 0) {
-                System.out.println("donnez la ligne du Jeton que vous souhaitez enlever : ");
+                System.out.println("donnez la ligne du Jeton que vous souhaitez récupérer : ");
                 int Lenleve0 = sc.nextInt();
-                System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
+                System.out.println("donnez la colonne du Jeton que vous souhaitez récupérer : ");
                 int Cenleve0 = sc.nextInt();
                 grilleJeu.recupererJeton(Lenleve0, Cenleve0);
-            } else {
+            } else if (reponse == 1){
                 jouerJeton(0);
+            } else if (reponse == 2){
+                System.out.println("entrez la colonne du jeton que vous souhaitez désintégrer");
+                int desintcol = sc.nextInt();
+                System.out.println("entrez la ligne du jeton que vous souhaitez désintégrer");
+                int desintlign = sc.nextInt();
+                grilleJeu.supprimerJeton(desintcol,desintlign);
             }
             grilleJeu.affichergrillesurconsole();
-            System.out.println("souhaitez-vous récupérez un jeton si oui 0:");
+            System.out.println("souhaitez-vous jouer un jeton (1)récupérez un jeton (0) ou désintégrer un jeton (2)");
             int reponse2 = sc.nextInt();
             System.out.println(reponse2);
             if (reponse2 == 0) {
@@ -127,8 +133,14 @@ public class Partie {
                 System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
                 int y2 = sc.nextInt();
                 grilleJeu.recupererJeton(x2, y2);
-            } else {
+            } else if (reponse2 == 1){
                 jouerJeton(1);
+            } else if (reponse2 == 2){
+                System.out.println("entrez la colonne du jeton que vous souhaitez désintégrer");
+                int desintcol = sc.nextInt();
+                System.out.println("entrez la ligne du jeton que vous souhaitez désintégrer");
+                int desintlign = sc.nextInt();
+                grilleJeu.supprimerJeton(desintcol,desintlign);
             }
         }
     }
