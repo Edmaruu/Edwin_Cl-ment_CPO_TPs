@@ -15,6 +15,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     Joueur[] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu = new Grille();
+    
 
     /**
      * Creates new form fenetreDeJeu
@@ -115,7 +116,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
         panneau_creation_outil.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, 30));
 
-        getContentPane().add(panneau_creation_outil, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, 290, 150));
+        getContentPane().add(panneau_creation_outil, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 300, 150));
 
         panneau_info_joueur.setBackground(new java.awt.Color(0, 255, 153));
         panneau_info_joueur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -201,15 +202,35 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(btn_col_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 30, -1, -1));
 
         btn_col_2.setText("3");
+        btn_col_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 30, -1, -1));
 
         btn_col_3.setText("4");
+        btn_col_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 30, -1, -1));
 
         btn_col_4.setText("5");
+        btn_col_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 30, -1, -1));
 
         btn_col_5.setText("6");
+        btn_col_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         btn_col_6.setText("7");
@@ -248,7 +269,25 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         panneau_info_joueur.setVisible(true);
         panneau_info_jeu.setVisible(true);
         initialiserPartie();
+        panneau_grille.repaint();
+        btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
+
+    private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_col_2ActionPerformed
+
+    private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_col_3ActionPerformed
+
+    private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_col_4ActionPerformed
+
+    private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_col_5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,24 +324,40 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
     }
     Random generateurAleat = new Random();
-    
-     public void initialiserPartie() {
+
+    void initialiserPartie() {
         grilleJeu = new Grille();
-        
+
         String nomjoueur1 = Nom_joueur_1.getText();
         Joueur J1 = new Joueur(nomjoueur1);
-        
+
         String nomjoueur2 = Nom_joueur_2.getText();
         Joueur J2 = new Joueur(nomjoueur2);
-        
-        ListeJoueur[0]=J1;
-        ListeJoueur[1]=J2;
-        
+
+        ListeJoueur[0] = J1;
+        ListeJoueur[1] = J2;
+
         attribuerCouleursAuxJoueurs();
+
+        System.out.println(J1.nom + " est de couleur " + J1.couleur);
+        System.out.println(J2.nom + " est de couleur " + J2.couleur);
         
-        System.out.println(J1.nom+" est de couleur "+ J1.couleur);
-         System.out.println(J2.nom+" est de couleur "+ J2.couleur);
+        lbl_j1_nom.setText(nomjoueur1);
+        lbl_j2_nom.setText(nomjoueur2);
+        lbl_j1_couleur.setText(J1.couleur);
+        lbl_j2_couleur.setText(J2.couleur);
+        lbl_j1_desint.setText(J1.nombreDesintegrateurs+"");
+        lbl_j2_desint.setText(J2.nombreDesintegrateurs+"");
         
+        Random r = new Random();
+        boolean le_premier= r.nextBoolean();
+        if (le_premier){
+            joueurCourant=ListeJoueur[0];
+        }else{
+            joueurCourant=ListeJoueur[1];
+        }
+        lbl_Jcourant.setText(joueurCourant.nom);
+
         Jeton jrouge = new Jeton("rouge");
         Jeton jjaune = new Jeton("jaune");
         if (ListeJoueur[0].couleur == "rouge") {
@@ -325,7 +380,11 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             int y = generateurAleat.nextInt(7);
             int w = generateurAleat.nextInt(6);
             int z = generateurAleat.nextInt(7);
-            grilleJeu.placerTrouNoir(x, y);
+            grilleJeu.placerTrouNoir(x, y);   
+            if (grilleJeu.Cellulejeu[x][y].presenceTrouNoir() == false) {
+                i--;
+                continue;
+            }
             if (i > 2) {
                 grilleJeu.placerDesintegrateur(x, y);
             } else {
@@ -334,13 +393,15 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                     while (x != w && y != z) {
                         w = generateurAleat.nextInt(6);
                         z = generateurAleat.nextInt(7);
+                        grilleJeu.placerDesintegrateur(w, z);
                     }
                 }
             }
         }
-        
+
     }
-     public void attribuerCouleursAuxJoueurs() {
+
+    void attribuerCouleursAuxJoueurs() {
         int hasard = generateurAleat.nextInt(1);
         if (hasard == 0) {
             ListeJoueur[0].affecterCouleur("jaune");
@@ -351,6 +412,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         }
 // distribue les couleurs aléatoirement aux joueurs
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Message;

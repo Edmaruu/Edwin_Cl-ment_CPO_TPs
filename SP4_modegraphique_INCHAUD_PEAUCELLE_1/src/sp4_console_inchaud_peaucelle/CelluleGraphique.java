@@ -32,7 +32,7 @@ public class CelluleGraphique extends JButton {
             setIcon(img_trouNoir);
         } else if (celluleAssociee.presenceDesintegrateur() == true) {
             setIcon(img_desint);
-        } else {
+        } else{
             String couleur_jeton = celluleAssociee.lireCouleurDuJeton();
             switch (couleur_jeton) {
                 case "vide":
@@ -46,6 +46,5 @@ public class CelluleGraphique extends JButton {
                     break;
             }
         }
-        setIcon(img_vide); //on attribue l'image celluleVide.png
     }
 }

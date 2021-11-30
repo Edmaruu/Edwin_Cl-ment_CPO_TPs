@@ -15,8 +15,8 @@ public class Cellule {
     
     public Cellule(){
         jetonCourant = null;
-        trouNoir = false;
-        desintegrateur = false;
+        trouNoir =false;
+        desintegrateur =false;
     }
     public boolean affecterJeton(Jeton jetonc){
         if (jetonCourant != null){
