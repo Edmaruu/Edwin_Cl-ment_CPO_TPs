@@ -32,9 +32,10 @@ public class Partie {
 // distribue les couleurs aléatoirement aux joueurs
     }
 
+  
     public void initialiserPartie() {
         grilleJeu = new Grille();
-       
+
         Jeton jrouge = new Jeton("rouge");
         Jeton jjaune = new Jeton("jaune");
         if (ListeJoueur[0].couleur == "rouge") {
@@ -72,7 +73,7 @@ public class Partie {
                         w = generateurAleat.nextInt(6);
                         z = generateurAleat.nextInt(7);
                         grilleJeu.placerDesintegrateur(w, z);
-                    }
+                    }// place les désintégrateurs et les trous noirs en disposant deux désingrateurs sous des trous noirs
                 }
             }
         }
@@ -103,9 +104,22 @@ public class Partie {
         }
     }
 
+    public boolean verifgagner() {
+        if (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) == true) {
+            System.out.println(ListeJoueur[0].nom + " a gagné !");
+            return true;
+        } else if (grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) == true) {
+            System.out.println(ListeJoueur[1].nom + " a gagné !");
+            return true;
+        } else {
+            return false;
+        }
+    }//renvoie true si un des deux joueurs a gagné false sinon et affiche un message annonçant le gagnant
+
     public void debuterPartie() {
         while (grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) != true && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) != true) {
             grilleJeu.affichergrillesurconsole();
+            System.out.println("c'est au joueur 1 de jouer");
             System.out.println("souhaitez-vous jouer un jeton (1)récupérez un jeton (0) ou désintégrer un jeton (2)");
             int reponse = sc.nextInt();
             if (reponse == 0) {
@@ -113,17 +127,34 @@ public class Partie {
                 int Lenleve0 = sc.nextInt();
                 System.out.println("donnez la colonne du Jeton que vous souhaitez récupérer : ");
                 int Cenleve0 = sc.nextInt();
-                grilleJeu.recupererJeton(Lenleve0, Cenleve0);
-            } else if (reponse == 1){
+                Jeton jetonrecup = grilleJeu.recupererJeton(Lenleve0, Cenleve0);
+                ListeJoueur[0].ajouterJeton(jetonrecup);
+                grilleJeu.tasserGrille(Cenleve0);
+                if (verifgagner() == true) {
+                    break;
+                }
+            } else if (reponse == 1) {
                 jouerJeton(0);
-            } else if (reponse == 2){
+                if (verifgagner() == true) {
+                    System.out.println("J'ai break");
+                    break;
+                }
+            } else if (reponse == 2) {
                 System.out.println("entrez la colonne du jeton que vous souhaitez désintégrer");
                 int desintcol = sc.nextInt();
                 System.out.println("entrez la ligne du jeton que vous souhaitez désintégrer");
                 int desintlign = sc.nextInt();
-                grilleJeu.supprimerJeton(desintcol,desintlign);
+                grilleJeu.supprimerJeton(desintcol, desintlign);
+                grilleJeu.tasserGrille(desintcol);
+                grilleJeu.affichergrillesurconsole();
+                System.out.println("Je tasse");
+                if (verifgagner() == true) {
+                    System.out.println("J'ai break");
+                    break;
+                }
             }
             grilleJeu.affichergrillesurconsole();
+            System.out.println("c'est au joueur 2 de jouer");
             System.out.println("souhaitez-vous jouer un jeton (1)récupérez un jeton (0) ou désintégrer un jeton (2)");
             int reponse2 = sc.nextInt();
             System.out.println(reponse2);
@@ -132,15 +163,25 @@ public class Partie {
                 int x2 = sc.nextInt();
                 System.out.println("donnez la colonne du Jeton que vous souhaitez enlever : ");
                 int y2 = sc.nextInt();
-                grilleJeu.recupererJeton(x2, y2);
-            } else if (reponse2 == 1){
+                Jeton jetonrecup = grilleJeu.recupererJeton(x2, y2);
+                ListeJoueur[1].ajouterJeton(jetonrecup);
+                grilleJeu.tasserGrille(y2);
+                if (verifgagner() == true) {
+                    break;
+                }
+            } else if (reponse2 == 1) {
                 jouerJeton(1);
-            } else if (reponse2 == 2){
+            } else if (reponse2 == 2) {
                 System.out.println("entrez la colonne du jeton que vous souhaitez désintégrer");
                 int desintcol = sc.nextInt();
                 System.out.println("entrez la ligne du jeton que vous souhaitez désintégrer");
                 int desintlign = sc.nextInt();
-                grilleJeu.supprimerJeton(desintcol,desintlign);
+                grilleJeu.supprimerJeton(desintcol, desintlign);
+                grilleJeu.tasserGrille(desintcol);
+                System.out.println(grilleJeu);
+                if (verifgagner() == true) {
+                    break;
+                }
             }
         }
     }
