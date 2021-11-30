@@ -55,9 +55,9 @@ public class Grille {
               if (Cellulejeu[i][a].lireCouleurDuJeton()=="vide"){
                   System.out.print(" - ");
               }else if(Cellulejeu[i][a].lireCouleurDuJeton()=="jaune"){
-                  System.out.print("\033[0;33m"+" jet ");
+                  System.out.print("\033[0;33m"+" j ");
               }else if(Cellulejeu[i][a].lireCouleurDuJeton()=="rouge"){
-                  System.out.print("\033[0;31m"+" cle ");
+                  System.out.print("\033[0;31m"+" c ");
               }
             }
             System.out.println();
@@ -142,7 +142,10 @@ public class Grille {
     public boolean supprimerJeton(int a, int b){
        return Cellulejeu[a][b].supprimerJeton();
     }
-    public void recupererJeton(int a, int b){
-        Cellulejeu[a][b].recupererJeton();
+    public Jeton recupererJeton(int a, int b){
+        Jeton refJeton = Cellulejeu[a][b].jetonCourant;
+        refJeton = null;
+        return(refJeton);
+        
     }
 }
