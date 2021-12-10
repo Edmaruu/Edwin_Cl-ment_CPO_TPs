@@ -26,8 +26,10 @@ public class Partie {
             grillejeu.changementetat(randomx, randomy);
         }
         grillejeu.affichergrillesurconsole();
-        jouer();
-        grillejeu.affichergrillesurconsole();
+        while (grillejeu.victoire != true){
+            jouer();
+            grillejeu.affichergrillesurconsole();
+        }
     }
 
     public void jouer() {
