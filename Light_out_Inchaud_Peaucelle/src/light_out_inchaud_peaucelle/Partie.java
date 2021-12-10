@@ -30,6 +30,7 @@ public class Partie {
             jouer();
             grillejeu.affichergrillesurconsole();
         }
+        System.out.print("Vous avez gagné !");
     }
 
     public void jouer() {
