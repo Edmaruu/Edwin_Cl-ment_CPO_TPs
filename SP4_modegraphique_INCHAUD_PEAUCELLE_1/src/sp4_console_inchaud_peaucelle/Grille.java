@@ -126,18 +126,20 @@ public class Grille {
         return false;
     }
 
-    public void tasserGrille(int a) {
-        for (int i = 5; i != -1; i--) {
-            if (Cellulejeu[i][a].jetonCourant == null) {
-                for (int b = i; b > 0; b--) {
-                    Cellulejeu[b][a].jetonCourant = Cellulejeu[b - 1][a].jetonCourant;
-                    Cellulejeu[b - 1][a].jetonCourant = null;
-                }
+    public void tasserColonne(int a) {
+        for (int i = 5; i>=1; i--) {
+            if (Cellulejeu[i][a].jetonCourant==null){
+                Cellulejeu[i][a].jetonCourant=Cellulejeu[i-1][a].jetonCourant;
+                Cellulejeu[i-1][a].jetonCourant=null;
             }
-            break;
+  
         }
     }
-
+    public void tasserGrille(){
+        for (int i=0;i<7;i++){
+            tasserColonne(i);
+        }
+    }
     public boolean placerTrouNoir(int a, int b) {
         if (Cellulejeu[a][b].presenceTrouNoir() == true) {
             return false;
