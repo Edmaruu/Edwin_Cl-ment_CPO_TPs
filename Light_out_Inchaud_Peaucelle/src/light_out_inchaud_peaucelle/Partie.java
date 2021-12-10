@@ -19,6 +19,12 @@ public class Partie {
 
     public void debuterpartie() {
         grillejeu = new grille();
+        int nbrcasedebut = generateurAleat.nextInt(14);
+        for (int i = 0; i < nbrcasedebut; i++) {
+            int randomx = generateurAleat.nextInt(4);
+            int randomy = generateurAleat.nextInt(4);
+            grillejeu.changementetat(randomx, randomy);
+        }
         grillejeu.affichergrillesurconsole();
         jouer();
         grillejeu.affichergrillesurconsole();
