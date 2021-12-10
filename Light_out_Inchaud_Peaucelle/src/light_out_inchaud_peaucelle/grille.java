@@ -21,7 +21,8 @@ public class grille {
         }
 
     }
-public void affichergrillesurconsole() {
+
+    public void affichergrillesurconsole() {
         for (int i = 0; i < 5; i++) {
             for (int a = 0; a < 5; a++) {
                 if (casejeu[i][a].etatcase == true) {
@@ -33,11 +34,23 @@ public void affichergrillesurconsole() {
             System.out.println();
         }
     }
-public void changementetat(int a, int b){
-         if (casejeu[a][b].etatcase==true){
-            casejeu[a][b].etatcase=false;
+
+    public void changementetat(int a, int b) {
+        if (casejeu[a][b].etatcase == true) {
+            casejeu[a][b].etatcase = false;
         } else {
-            casejeu[a][b].etatcase=true;
+            casejeu[a][b].etatcase = true;
         }
-     }
+    }
+
+    public boolean victoire() {
+        for (int i = 0; i < 5; i++) {
+            for (int a = 0; a < 5; a++) {
+                if (casejeu[i][a].etatcase == true) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
