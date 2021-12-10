@@ -31,33 +31,46 @@ public class Partie {
     }
 
     public void jouer() {
-        int abscisse;
-        int ordonnee;
-        System.out.println("entrez l'abcisse du point sur lequel vous voulez cliquer");
-        abscisse = sc.nextInt();
-        System.out.println("entrez l'ordonnée du point sur lequel vous voulez cliquer");
-        ordonnee = sc.nextInt();
-        grillejeu.changementetat(abscisse, ordonnee);
-        if (ordonnee == 0) {
-            grillejeu.changementetat(abscisse, ordonnee + 1);
-            if (abscisse == 0) {
-                grillejeu.changementetat(abscisse + 1, ordonnee);
-            } else if (abscisse == 4) {
-                grillejeu.changementetat(abscisse - 1, ordonnee);
+        int ligne;
+        int colonne;
+        System.out.println("entrez ligne du point sur lequel vous voulez cliquer");
+        ligne = sc.nextInt();
+        System.out.println("entrez colonne du point sur lequel vous voulez cliquer");
+        colonne = sc.nextInt();
+        grillejeu.changementetat(ligne, colonne);
+        if (colonne == 0) {
+            grillejeu.changementetat(ligne, colonne + 1);
+            if (ligne == 0) {
+                grillejeu.changementetat(ligne + 1, colonne);
+            } else if (ligne == 4) {
+                grillejeu.changementetat(ligne - 1, colonne);
             } else {
-                grillejeu.changementetat(abscisse - 1, ordonnee);
-                grillejeu.changementetat(abscisse + 1, ordonnee);
+                grillejeu.changementetat(ligne - 1, colonne);
+                grillejeu.changementetat(ligne + 1, colonne);
             }
-        } else if (ordonnee == 4) {
-            grillejeu.changementetat(abscisse, ordonnee - 1);
-            if (abscisse == 0) {
-                grillejeu.changementetat(abscisse + 1, ordonnee);
-            } else if (abscisse == 4) {
-                grillejeu.changementetat(abscisse - 1, ordonnee);
+        } else if (colonne == 4) {
+            grillejeu.changementetat(ligne, colonne - 1);
+            if (ligne == 0) {
+                grillejeu.changementetat(ligne + 1, colonne);
+            } else if (ligne == 4) {
+                grillejeu.changementetat(ligne - 1, colonne);
             } else {
-                grillejeu.changementetat(abscisse - 1, ordonnee);
-                grillejeu.changementetat(abscisse + 1, ordonnee);
+                grillejeu.changementetat(ligne - 1, colonne);
+                grillejeu.changementetat(ligne + 1, colonne);
             }
+        }else if(ligne==0){
+            grillejeu.changementetat(ligne+1, colonne);
+            grillejeu.changementetat(ligne, colonne+1);
+            grillejeu.changementetat(ligne, colonne-1);       
+        }else if(ligne==4){
+            grillejeu.changementetat(ligne-1, colonne);
+            grillejeu.changementetat(ligne, colonne+1);
+            grillejeu.changementetat(ligne, colonne-1);
+        }else {
+            grillejeu.changementetat(ligne-1, colonne);
+            grillejeu.changementetat(ligne, colonne+1);
+            grillejeu.changementetat(ligne, colonne-1);
+            grillejeu.changementetat(ligne+1, colonne);
         }
     }
 }
