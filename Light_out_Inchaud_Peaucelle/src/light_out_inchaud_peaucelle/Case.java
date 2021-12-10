@@ -10,8 +10,10 @@ package light_out_inchaud_peaucelle;
  */
 public class Case {
     boolean etatcase;
+    boolean piege;
      public Case(){
         etatcase=false;
+        piege=false;
     }
      
 }
