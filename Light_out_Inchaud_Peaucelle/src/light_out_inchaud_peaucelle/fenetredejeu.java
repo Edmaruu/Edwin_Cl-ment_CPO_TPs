@@ -20,11 +20,13 @@ public class fenetredejeu extends javax.swing.JFrame {
         for (int i = 0; i < 5; i++) {
             for (int a = 0; a < 5; a++) {
                 casegraphique casep= new casegraphique(grillegraph.casejeu[i][a]);
+                
                 casep.addActionListener(new java.awt.event.ActionListener(){
                     public void actionPerformed(java.awt.event.ActionEvent evt){
                         Case c=casep.casegraph;
                     }
                 });
+                panneaudejeu.add(casep);
             }
         }
         
