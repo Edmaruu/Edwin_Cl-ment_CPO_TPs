@@ -49,7 +49,7 @@ public class fenetredejeu extends javax.swing.JFrame {
         panneaudejeu.setBackground(new java.awt.Color(255, 255, 255));
         panneaudejeu.setPreferredSize(new java.awt.Dimension(0, 0));
         panneaudejeu.setLayout(new java.awt.GridLayout(5, 5));
-        getContentPane().add(panneaudejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 610, 410));
+        getContentPane().add(panneaudejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 480, 480));
 
         setBounds(0, 0, 882, 532);
     }// </editor-fold>//GEN-END:initComponents
