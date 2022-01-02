@@ -4,6 +4,10 @@
  */
 package light_out_inchaud_peaucelle;
 
+import java.util.Random;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Incha
@@ -19,11 +23,18 @@ public class fenetredejeu extends javax.swing.JFrame {
         
         for (int i = 0; i < 5; i++) {
             for (int a = 0; a < 5; a++) {
+                int b=i;
+                int d=a;
                 casegraphique casep= new casegraphique(grillegraph.casejeu[i][a]);
                 
                 casep.addActionListener(new java.awt.event.ActionListener(){
                     public void actionPerformed(java.awt.event.ActionEvent evt){
                         Case c=casep.casegraph;
+                        jouer(b,d);
+                        panneaudejeu.repaint();
+                        if (grillegraph.victoire()){
+                            mode_normal.setEnabled(true);
+                        }
                     }
                 });
                 panneaudejeu.add(casep);
@@ -42,6 +53,7 @@ public class fenetredejeu extends javax.swing.JFrame {
     private void initComponents() {
 
         panneaudejeu = new javax.swing.JPanel();
+        mode_normal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,8 +63,23 @@ public class fenetredejeu extends javax.swing.JFrame {
         panneaudejeu.setLayout(new java.awt.GridLayout(5, 5));
         getContentPane().add(panneaudejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 480, 480));
 
+        mode_normal.setLabel("Mode normal");
+        mode_normal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mode_normalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mode_normal, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 230, 70));
+
         setBounds(0, 0, 882, 532);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mode_normalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mode_normalActionPerformed
+          // TODO add your handling code here:
+          debuterpartie();
+          panneaudejeu.repaint();
+          mode_normal.setEnabled(false);
+    }//GEN-LAST:event_mode_normalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,8 +115,57 @@ public class fenetredejeu extends javax.swing.JFrame {
             }
         });
     }
-
+  public void debuterpartie() {
+        Random generateurAleat = new Random();
+        int nbrcasedebut = 1+generateurAleat.nextInt(15);
+        for (int i = 0; i < nbrcasedebut; i++) {
+            int randomx = generateurAleat.nextInt(4);
+            int randomy = generateurAleat.nextInt(4);
+            grillegraph.changementetat(randomx, randomy);
+        }
+        
+    }
+  
+  public void jouer(int ligne, int colonne) {
+        grillegraph.changementetat(ligne, colonne);
+        if (colonne == 0) {
+            grillegraph.changementetat(ligne, colonne + 1);
+            if (ligne == 0) {
+                grillegraph.changementetat(ligne + 1, colonne);
+            } else if (ligne == 4) {
+                grillegraph.changementetat(ligne - 1, colonne);
+            } else {
+                grillegraph.changementetat(ligne - 1, colonne);
+                grillegraph.changementetat(ligne + 1, colonne);
+            }
+        } else if (colonne == 4) {
+            grillegraph.changementetat(ligne, colonne - 1);
+            if (ligne == 0) {
+                grillegraph.changementetat(ligne + 1, colonne);
+            } else if (ligne == 4) {
+                grillegraph.changementetat(ligne - 1, colonne);
+            } else {
+                grillegraph.changementetat(ligne - 1, colonne);
+                grillegraph.changementetat(ligne + 1, colonne);
+            }
+        }else if(ligne==0){
+            grillegraph.changementetat(ligne+1, colonne);
+            grillegraph.changementetat(ligne, colonne+1);
+            grillegraph.changementetat(ligne, colonne-1);       
+        }else if(ligne==4){
+            grillegraph.changementetat(ligne-1, colonne);
+            grillegraph.changementetat(ligne, colonne+1);
+            grillegraph.changementetat(ligne, colonne-1);
+        }else {
+            grillegraph.changementetat(ligne-1, colonne);
+            grillegraph.changementetat(ligne, colonne+1);
+            grillegraph.changementetat(ligne, colonne-1);
+            grillegraph.changementetat(ligne+1, colonne);
+        }
+    }
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton mode_normal;
     private javax.swing.JPanel panneaudejeu;
     // End of variables declaration//GEN-END:variables
 }

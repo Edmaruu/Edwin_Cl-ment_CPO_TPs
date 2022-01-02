@@ -51,5 +51,18 @@
         <Property name="rows" type="int" value="5"/>
       </Layout>
     </Container>
+    <Component class="javax.swing.JButton" name="mode_normal">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Mode normal"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mode_normalActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="600" y="40" width="230" height="70"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>
